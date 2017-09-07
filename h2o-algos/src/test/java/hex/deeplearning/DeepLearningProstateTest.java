@@ -384,7 +384,7 @@ public class DeepLearningProstateTest extends TestUtil {
                                                   model2.testJavaScoring(valid, pred, 1e-8,1e-6);
                                                 }
                                                 Log.info("testJavaScoring ln 386");
-                                                Assert.assertTrue(model2.testJavaScoring(valid, pred, 1e-3, 1e-3));
+                                                Assert.assertTrue(model2.testJavaScoring(valid, pred, 1e-2, 1e-2));
 
                                                 hex.ModelMetrics mm = hex.ModelMetrics.getFromDKV(model2, valid);
                                                 double error;
