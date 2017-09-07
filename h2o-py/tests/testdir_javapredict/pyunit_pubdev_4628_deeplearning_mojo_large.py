@@ -36,14 +36,16 @@ def deeplearning_mojo():
         pyunit_utils.compare_numeric_frames(pred_h2o, pred_mojo, 0.1, tol=1e-4)
     except Exception as ex:
         print("***************  ERROR ")
-        print(ex)
         if hasattr(ex, 'args') and type(ex.args[0])==type("what"):
+            print(ex.args[0])
+            print("unstable model" not in ex.args[0] and "DistributedException" not in ex.args[0])
             if "unstable model" not in ex.args[0] and "DistributedException" not in ex.args[0]:
                 print(params)
                 sys.exit(1)     # okay to encounter unstable model but nothingh else
             else:
                 print("An unstable model is found and no mojo is built.")
         else:
+            print(ex)
             sys.exit(1)         # other errors occurred.
 
 
